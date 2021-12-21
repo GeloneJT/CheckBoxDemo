@@ -2,16 +2,15 @@ package com.example.checkboxdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
-    lateinit var c1: CheckBox
-    lateinit var c2: CheckBox
-    lateinit var c3: CheckBox
-    lateinit var tv: TextView
+    private lateinit var c1: CheckBox
+    private lateinit var c2: CheckBox
+    private lateinit var c3: CheckBox
+    private lateinit var tv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         tv = findViewById(R.id.orderTotal)
     }
 
-    fun click(v:View) {
+    fun click() {
         var menuTotal = 0
         if (c1.isChecked) {
             Toast.makeText(this, "Pizza Selected", Toast.LENGTH_SHORT).show()
@@ -38,6 +37,6 @@ class MainActivity : AppCompatActivity() {
             menuTotal +=10
         }
         Toast.makeText(this,"Total is $$menuTotal", Toast.LENGTH_LONG).show()
-        tv.setText("Order total: $$menuTotal")
+        "Order total: $$menuTotal".also { tv.text = it }
     }
 }
